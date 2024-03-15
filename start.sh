@@ -5,7 +5,7 @@ REPOSITORY=/var/lib/jenkins/workspace
 echo "REPOSITORY = $REPOSITORY"
 cd $REPOSITORY
 
-PROJECT_NAME=Music
+PROJECT_NAME=music
 echo "PROJECT_NAME = $PROJECT_NAME"
 
 PROJECT_PID=$(pgrep -f $PROJECT_NAME)
