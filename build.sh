@@ -4,8 +4,8 @@
 REPOSITORY=/var/lib/jenkins/workspace
 echo "REPOSITORY = $REPOSITORY"
 
-if [ -n "$MUSIC" ]; then
-  PROJECT_NAME="$MUSIC"
+if [ -n "$Music" ]; then
+  PROJECT_NAME="$Music"
 else
   PROJECT_NAME=$(sudo basename "$(pwd)")
 fi
