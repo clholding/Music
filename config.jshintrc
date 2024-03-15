@@ -1,0 +1,8 @@
+{
+    "esversion": 11,
+    "laxbreak" : true
+////    "EqualityComparisonWithCoercionJS":  false,
+//    "JSUnresolvedVariable": false,
+//    "JSUnresolvedFunction": false
+
+}

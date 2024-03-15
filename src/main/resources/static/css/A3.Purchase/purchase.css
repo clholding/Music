@@ -1,0 +1,202 @@
+
+.main-container {
+    display: flex !important;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1320px;
+    width: 100%;
+
+}
+
+h2 {
+    margin-top: 78px;
+    margin-bottom: 47px;
+}
+
+#lesson-poster {
+    background: url("/images/baking-lesson.png") no-repeat center;
+    min-height: 200px;
+    min-width: 280px;
+    border-radius: 10px !important;
+}
+
+#title {
+    font-size: 24px;
+}
+
+
+.order-history, .payment-method {
+    background: #FBFBFB;
+    width: 100% !important;
+    border: 1px solid #DEE2E6;
+    background: #FBFBFB;
+    margin: 0 auto;
+}
+
+.order-history {
+    padding: 24px 38px 54px 56px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.payment-method {
+    height: 550px;
+    padding: 38px 50px 0px 56px;
+    border-top: none;
+}
+
+
+.payment-method .container {
+    background: #FFFF;
+    padding: 18px 30px 33px 27px;
+    width: 100%;
+    max-height: 483px;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #DEE2E6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+hr{
+    border: 1px solid #DEE2E6;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 50px;
+}
+.text {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    gap: 100px;
+}
+
+
+h4 {
+
+    font-size: 20px;
+
+    font-weight: 700 !important;
+
+}
+
+.form-group {
+    align-items: start;
+}
+
+.shipping-info {
+    gap: 70px;
+    margin-top: 67px;
+}
+
+.shipping-address {
+    flex-wrap: nowrap;
+}
+
+.buyer-info {
+    width: 463px;
+    border-left: 0.5px solid #DEE2E6;
+    padding-left: 63px;
+    position: absolute;
+    right: 0;
+    top: 351;
+    bottom: 0;
+    padding-top: 51;
+    height: 1037px;
+    background: #FBFBFB;
+}
+
+input::placeholder {
+    color: rgba(33, 37, 41, 0.20);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-check-input:checked {
+    background-color: black;
+
+}
+
+.order-history input, select {
+    height: 32px;
+    border: 1px solid #DEE2E6 !important;
+    border-radius: 0px !important;
+}
+
+.form-check label {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+select {
+    background-position: right 10px center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-image: url(/images/down.png);
+    background-size: 16px 16px;
+
+}
+
+.btn-primary {
+    margin: 41px 0;
+    width: 230px;
+    height: 64px;
+    border-radius: 50px;
+    background-color: black;
+    border-color: black;
+}
+
+
+@media (max-width: 768px) {
+    h2 {
+        margin-top: 50px;
+    }
+
+    .order-history, .payment-method {
+        padding: 24px;
+    }
+
+    .title {
+        margin-left: 0;
+    }
+
+    .order-history-info {
+        flex-wrap: wrap;
+    }
+
+    .order-history-text-info {
+        margin-left: 0;
+        margin-top: 40px;
+    }
+
+
+    .text {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .text > div {
+        width: 100% !important;
+    }
+
+    .payment-method .container {
+        max-height: 100%;
+    }
+
+    #lesson-poster {
+        width: 100%;
+        background-size: cover;
+
+    }
+
+
+}
+

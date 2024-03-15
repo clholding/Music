@@ -1,0 +1,36 @@
+button.active{
+    background: #DAE0E4;
+    border:none;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    width: 100%;
+    max-width: 200px;
+    min-width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 5px 0;
+    gap: 10px;
+}
+
+button.active:hover{
+    cursor: pointer;
+}
+
+#menuList > li {
+    border: none;
+    padding: 5px 15px;
+    width: 100%;
+    max-width: 200px;
+    min-width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 5px 0;
+    gap: 10px;
+}
+
+#menuList > li:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ast.clLesson.dao.commonDao">
+    <select id="findCodeByEmail" parameterType="hashmap" resultType="map">
+        SELECT * FROM TB_CONFIRM_CODE WHERE USER_EMAIL_ID = #{USER_ID}
+    </select>
+    <insert id="saveCode" parameterType="hashmap">
+        INSERT INTO TB_CONFIRM_CODE (USER_EMAIL_ID, CODE) VALUES (#{USER_ID},#{code});
+    </insert>
+    <update id="updateCode" parameterType="hashmap">
+        UPDATE TB_CONFIRM_CODE SET CODE = #{code} WHERE USER_EMAIL_ID = #{USER_ID};
+    </update>
+
+    <select id="getArticleList" resultType="map">
+        SELECT article.*, user.USER_NAME FROM TB_LEGAL_CONSULT article
+            LEFT JOIN TB_USER user ON (article.REG_USER_ID = user.USER_ID)
+        <if test="keyword != null and keyword != ''">
+            WHERE TITLE like concat('%',#{keyword},'%')
+        </if>
+        ORDER BY APPEND_DATE DESC LIMIT #{page}, 10
+    </select>
+
+    <select id="getArticleCount" resultType="int">
+        SELECT COUNT(*) FROM TB_LEGAL_CONSULT
+        <if test="keyword != null and keyword != ''">
+            WHERE TITLE like concat('%',#{keyword},'%')
+        </if>
+    </select>
+
+    <select id="getArticle" resultType="map">
+        SELECT article.*, user.USER_NAME  FROM TB_LEGAL_CONSULT article
+            LEFT JOIN TB_USER user ON (article.REG_USER_ID = user.USER_ID)
+        WHERE ID_NO = #{id}
+    </select>
+
+    <insert id="saveArticle" parameterType="hashmap">
+        INSERT INTO TB_LEGAL_CONSULT (TITLE, CONTENT, REG_USER_ID, VIEWS)
+        VALUES(#{TITLE}, #{CONTENT}, #{REG_USER_ID}, #{VIEWS});
+    </insert>
+
+    <update id="updateArticle" parameterType="hashmap">
+        UPDATE TB_LEGAL_CONSULT
+        SET TITLE = #{TITLE}, CONTENT = #{CONTENT}, UPDATE_DATE = CURTIME()
+        WHERE ID_NO = #{id}
+    </update>
+
+    <update id="updateArticleViews" parameterType="hashmap">
+        UPDATE TB_LEGAL_CONSULT SET VIEWS = #{VIEWS} WHERE ID_NO = #{id}
+    </update>
+
+    <delete id="deleteArticle" parameterType="int">
+        DELETE FROM TB_LEGAL_CONSULT WHERE ID_NO = #{id}
+    </delete>
+
+
+    <select id="getMusicList" resultType="map">
+        SELECT *
+          FROM TB_MUSIC
+        <if test="keyword != null and keyword != ''">
+            WHERE TITLE like concat('%',#{keyword},'%')
+        </if>
+        ORDER BY APPEND_DATE DESC LIMIT #{page}, 10
+    </select>
+
+    <select id="getMusicCount" resultType="int">
+        SELECT COUNT(*) FROM TB_MUSIC
+        <if test="keyword != null and keyword != ''">
+            WHERE TITLE like concat('%',#{keyword},'%')
+        </if>
+    </select>
+
+    <select id="getMusic" resultType="map">
+        SELECT *
+          FROM TB_MUSIC
+         WHERE ID_NO = #{id}
+    </select>
+
+    <insert id="saveMusic" parameterType="hashmap">
+        INSERT INTO TB_MUSIC (TITLE, NAME, FILE, VIEWS, PLAY_YN)
+        VALUES(#{TITLE}, #{NAME}, #{FILE}, 0, #{PLAY_YN});
+    </insert>
+
+    <update id="updateMusic" parameterType="hashmap">
+        UPDATE TB_MUSIC
+        SET TITLE = #{TITLE}
+          , NAME = #{NAME}
+          <if test="FILE != null and FILE != ''">
+          , FILE = #{FILE}
+          </if>
+          , PLAY_YN = #{PLAY_YN}
+          , UPDATE_DATE = CURTIME()
+        WHERE ID_NO = #{id}
+    </update>
+
+    <update id="updateMusicViews" parameterType="hashmap">
+        UPDATE TB_MUSIC SET VIEWS = #{VIEWS} WHERE ID_NO = #{id}
+    </update>
+
+    <delete id="deleteMusic" parameterType="int">
+        DELETE FROM TB_MUSIC WHERE ID_NO = #{id}
+    </delete>
+
+
+    <select id="getTeacherList" resultType="map">
+        SELECT * FROM TB_TEACHER
+        <if test="keyword != null and keyword != ''">
+            WHERE NAME like concat('%',#{keyword},'%')
+        </if>
+        ORDER BY APPEND_DATE DESC LIMIT #{page}, 20
+    </select>
+
+    <select id="getTeacherCount" resultType="int">
+        SELECT COUNT(*) FROM TB_TEACHER
+        <if test="keyword != null and keyword != ''">
+            WHERE NAME like concat('%',#{keyword},'%')
+        </if>
+    </select>
+
+    <select id="getTeacher" resultType="map">
+        SELECT teacher.*, u.USER_ID AS USER_ID  FROM TB_TEACHER teacher
+        LEFT JOIN TB_USER u ON (u.USER_PK = teacher.USER_PK)
+        WHERE TEACHER_PK = #{id}
+    </select>
+
+    <insert id="saveTeacher" parameterType="hashmap">
+        INSERT INTO TB_TEACHER (USER_PK, NAME, SELF_INTRO, TEL, EMAIL, EXPERTISE, EDUCATION, LESSON_TYPE, LESSON_PRICE, LESSON_DETAIL, PROFILE_FILE_NAME, AWS_FILE_NAME)
+        VALUES(#{USER_PK}, #{NAME}, #{SELF_INTRO}, #{TEL}, #{EMAIL}, #{EXPERTISE}, #{EDUCATION}, #{LESSON_TYPE}, #{LESSON_PRICE},
+               #{LESSON_DETAIL}, #{ORIGINAL_FILE_NAME}, #{AWS_FILE_NAME})
+    </insert>
+
+    <update id="updateTeacher" parameterType="hashmap">
+        UPDATE TB_TEACHER
+        SET NAME = #{NAME}, SELF_INTRO = #{SELF_INTRO}, TEL = #{TEL}, EMAIL = #{EMAIL}, EXPERTISE = #{EXPERTISE},
+            EDUCATION = #{EDUCATION}, LESSON_TYPE = #{LESSON_TYPE}, LESSON_PRICE = #{LESSON_PRICE},
+            LESSON_DETAIL = #{LESSON_DETAIL}, ORIGINAL_FILE_NAME = #{ORIGINAL_FILE_NAME}, AWS_FILE_NAME = #{AWS_FILE_NAME}, UPDATE_DATE = CURTIME()
+        WHERE TEACHER_PK = #{TEACHER_PK}
+    </update>
+
+    <delete id="deleteTeacher" parameterType="int">
+        DELETE FROM TB_TEACHER WHERE TEACHER_PK = #{id}
+    </delete>
+
+    <insert id="matchTeacher" parameterType="hashmap">
+        INSERT INTO TB_TEACHER_MATCH (TEACHER_PK, USER_PK)
+        VALUES(#{TEACHER_PK}, #{USER_PK});
+    </insert>
+
+    <select id="getTeacherMatch" resultType="string">
+        SELECT USER_PK FROM TB_TEACHER_MATCH WHERE TEACHER_PK = #{TEACHER_PK}
+    </select>
+
+    <select id="getTeacherMatchList" resultType="map">
+        SELECT m.*, teacher.NAME AS TEACHER_NAME, user.USER_NAME, user.USER_EMAIL, user.USER_TEL FROM TB_TEACHER_MATCH m
+        LEFT JOIN TB_USER user ON (m.USER_PK = user.USER_PK)
+        LEFT JOIN TB_TEACHER teacher ON (m.TEACHER_PK = teacher.TEACHER_PK)
+        <if test="keyword != null and keyword != ''">
+            WHERE teacher.NAME like concat('%',#{keyword},'%') OR user.USER_NAME like concat('%',#{keyword},'%')
+        </if>
+        ORDER BY APPEND_DATE DESC LIMIT #{page}, 10
+    </select>
+
+    <select id="getMatchCount" resultType="int">
+        SELECT COUNT(*) FROM TB_TEACHER_MATCH m
+        LEFT JOIN TB_USER user ON (m.USER_PK = user.USER_PK)
+        LEFT JOIN TB_TEACHER teacher ON (m.TEACHER_PK = teacher.TEACHER_PK)
+        <if test="keyword != null and keyword != ''">
+            WHERE teacher.NAME like concat('%',#{keyword},'%') OR user.USER_NAME like concat('%',#{keyword},'%')
+        </if>
+    </select>
+
+</mapper>
