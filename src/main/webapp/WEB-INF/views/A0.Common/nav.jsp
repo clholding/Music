@@ -10,23 +10,23 @@
 
         <ul id="nav" class="menuList">
             <li>
-                <a href="/lessonInfo" class="menuText">레슨 안내</a>
+                <a href="/lessonInfo" class="menuText">협회 소개</a>
             </li>
 
             <li>
-                <a href="/" class="menuText">방문 신청</a>
+                <a href="/" class="menuText">공지사항</a>
             </li>
             
             <li>
-                <a href="/music" class="menuText">음악</a>
+                <a href="/music" class="menuText">음악 자료실</a>
             </li>
 
             <li>
                 <security:authorize access="isAuthenticated()">
-                    <a href="/teacherRegist" class="menuText">쌤 프로필 등록</a>
+                    <a href="/teacherRegist" class="menuText">저작물 검색.</a>
                 </security:authorize>
                 <security:authorize access="isAuthenticated() == false">
-                    <a href="/login" class="menuText">쌤 프로필 등록</a>
+                    <a href="/login" class="menuText">저작물 검색</a>
                 </security:authorize>
             </li>
 
@@ -88,14 +88,14 @@
 
     <div class="subMenuWrap">
         <div class="d-flex flex-column">
-            <a href="/lessonInfo" class="menuText">레슨 안내</a>
+            <a href="/lessonInfo" class="menuText">협회소개</a>
         </div>
 
         <div class="d-flex flex-column">
-            <a href="/teacherList" class="menuText">레슨쌤 소개</a>
-            <a href="/" class="menuText">안전방문 레슨 신청</a>
-            <a href="/" class="menuText">장소 대관</a>
-            <a href="/lessonList" class="menuText">레슨 목록</a>
+            <a href="/teacherList" class="menuText">협회 소개</a>
+            <a href="/" class="menuText">신청</a>
+            <a href="/" class="menuText">대관</a>
+            <a href="/lessonList" class="menuText">목록</a>
         </div>
 
         <div class="d-flex flex-column">
@@ -105,10 +105,10 @@
 
         <div class="d-flex flex-column">
             <security:authorize access="isAuthenticated()">
-                <a href="/teacherRegist" class="menuText">프로필 등록</a>
+                <a href="/teacherRegist" class="menuText">저작물 검색</a>
             </security:authorize>
             <security:authorize access="isAuthenticated() == false">
-                <a href="/login" class="menuText">프로필 등록</a>
+                <a href="/login" class="menuText">저작물 등록</a>
             </security:authorize>
         </div>
 

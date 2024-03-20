@@ -4,13 +4,13 @@
 <div id="mobileNav">
     <ul>
         <li>
-            <a href="/lessonInfo" onclick="menuClose()">레슨 안내</a>
+            <a href="/lessonInfo" onclick="menuClose()">협회 소개</a>
         </li>
         <li>
-            <a href="/teacherList" onclick="menuClose()">레슨쌤 소개</a>
+            <a href="/teacherList" onclick="menuClose()">공지사항 </a>
         </li>
         <li>
-            <a href="/" onclick="menuClose()">안전방문 레슨 신청</a>
+            <a href="/" onclick="menuClose()">음악 자료실</a>
         </li>
         <li>
             <a href="/" onclick="menuClose()">장소 대관</a>
@@ -26,7 +26,7 @@
                 <a href="/teacherRegist" onclick="menuClose()">쌤 프로필 등록</a>
             </security:authorize>
             <security:authorize access="isAuthenticated() == false">
-                <a href="/login" onclick="menuClose()">쌤 프로필 등록</a>
+                <a href="/login" onclick="menuClose()">저작물 검색</a>
             </security:authorize>
         </li>
     </ul>
